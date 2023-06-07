@@ -15,7 +15,7 @@ import socket
 def get_local_ip():
     try:
         temp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        temp_socket.connect(("8.8.8.8", 80)) # 80 (HTTP), 443 (HTTPS), 22 (SSH), 21 (FTP), 25 (SMTP)
+        temp_socket.connect(("8.8.8.8", 80)) 
 
         local_ip = temp_socket.getsockname()[0]
 
@@ -27,13 +27,15 @@ def get_local_ip():
 
 
 def main():
+	port = 443 # 80 (HTTP), 443 (HTTPS), 22 (SSH), 21 (FTP), 25 (SMTP)
+
 	local_ip = get_local_ip()
 	network = ipaddress.ip_network(local_ip+'/24', strict=False)
 
 	for ip in network.hosts():
 		ip = str(ip)
-		if scan_port(ip, 80):  # Change the port number as per your requirement
-			print(f"IP Address: {ip} - Port 80 is open.")
+		if scan_port(ip, port):  # Change the port number as per your requirement
+			print(f"IP Address: {ip} - Port {port} is open.")
 
 if __name__ == '__main__':
 	main()
