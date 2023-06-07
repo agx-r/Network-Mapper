@@ -19,18 +19,18 @@ The Network Mapper is a Python script for Windows that allows you to scan a rang
    python network_mapper.py
    ```
 
-   The script will scan the IP addresses in the local network and check if port 80 is open on each address.
+   The script will scan the IP addresses in the local network and check if port 443 is open on each address.
 
-4. You can modify the port number in the `scan_port` function inside the script to scan for a different port. For example, to scan port 443, change the following line:
+4. You can modify the port number in the `scan_port` function inside the script to scan for a different port. For example, to scan port 80, change the following line:
 
    ```python
-   if scan_port(ip, 80):
+   port = 443
    ```
 
    to:
 
    ```python
-   if scan_port(ip, 443):
+   port = 80
    ```
 
    Save the script and re-run it to scan the new port.
